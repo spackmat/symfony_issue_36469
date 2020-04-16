@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reproducer for <a href="https://github.com/symfony/symfony/issues/36469">Symfony Issue 36469</a></h1>
+    <p>The data transformer inside the <code>ReproducerType</code> transforms the six array items from the underlying data to two array items with a data structure compatible with the <code>CustomType</code>.</p>
+    <p>Expected behavior: two form rows for 2019 and 2020 (as seen in the Profiler in the "Normalized Format" section for the field <code>fieldNeedingTransformer</code>)</p>
+    <p>Actual Behavior: six form rows, where the first two are the expected ones and the others receive <code>null</code> data, as one can see in the profiler for their children of <code>fieldNeedingTransformer</code>.</p>
+
+    {{ form(form) }}
+{% endblock %}
